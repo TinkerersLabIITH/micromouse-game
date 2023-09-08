@@ -10,7 +10,12 @@ html, body {
     bottom: 0;
     left: 0;
     right: 0;
-    background-color: #fff;
+    background-image: linear-gradient(
+        180deg,
+        #010121 0%,
+        rgba(20, 20, 66, 0.73) 67.35%,
+        #010121 100%
+      );
     font-family: 'Poppins', sans-serif;
 }
 
@@ -25,24 +30,36 @@ html, body {
     margin: auto;
     border-radius: 10px;
     margin: 15px;
+    background-image: linear-gradient(
+        180deg,
+        #010121 0%,
+        rgba(8, 8, 25, 0.73) 67.35%,
+        #010121 100%
+      );
+
 }
 #mazeContainer #mazeCanvas {
     margin: 10px;
     display: block;
-    border: solid 2px black;
-
+    border: solid 2px #fff;
+    color: #fff;
+    /* background-color: white; */
     height: 300px;
+}
+
+#mazeContainer #mazeCanvas .border {
+    color: #fff;
 }
 
 input, select {
     cursor: pointer;
-    background-color: rgba(0, 0, 0, 0.30);
+    background-color: white;
     height: 45px;
     width: 150px;
     padding: 10px;
     border: none;
     border-radius: 5px;
-    color: white;
+    color:black;
     display: inline-block;
     font-size: 15px;
     text-align: center;
@@ -61,13 +78,13 @@ input:focus, select:focus {
 .custom-select {
 	display: inline-block;
 }
-.custom-select select {
+/* .custom-select select {
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
     background-repeat: no-repeat;
     background-position: 125px center;
-}
+} */
 #Message-Container {
     visibility: hidden;
     color: white;
@@ -119,7 +136,7 @@ input:focus, select:focus {
     height: auto;
 }
 .border {
-    border: 10px black solid;
+    border: 10px #fff solid;
     border-radius: 10px;
 }
 

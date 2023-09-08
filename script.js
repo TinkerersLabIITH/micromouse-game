@@ -215,6 +215,8 @@ function rand(max) {
     var cellSize = cellsize;
     var drawEndMethod;
     ctx.lineWidth = cellSize / 40;
+    ctx.strokeStyle = "white"; // Setting the stroke color to black
+
   
     this.redrawMaze = function(size) {
       cellSize = size;
@@ -278,13 +280,13 @@ function rand(max) {
             fraction,
             fraction
           );
-          if (colorSwap) {
-            ctx.fillStyle = "rgba(0, 0, 0, 0.8)";
-          } else {
-            ctx.fillStyle = "rgba(255, 255, 255, 0.8)";
-          }
+          // if (colorSwap) {
+          //   ctx.fillStyle = "purple"; //white
+          // } else {
+          //   ctx.fillStyle = "rgba(255, 255, 255, 0.8)"; //red
+          // }
           ctx.fill();
-          colorSwap = !colorSwap;
+          // colorSwap = !colorSwap;
         }
       }
     }
@@ -345,7 +347,7 @@ function rand(max) {
   
     function drawSpriteCircle(coord) {
       ctx.beginPath();
-      ctx.fillStyle = "yellow";
+      ctx.fillStyle = "white";
       ctx.arc(
         (coord.x + 1) * cellSize - halfCellSize,
         (coord.y + 1) * cellSize - halfCellSize,
@@ -526,7 +528,7 @@ function rand(max) {
     };
     sprite = new Image();
     sprite.src =
-      "./key.png" +
+      "./mouse.png" +
       "?" +
       new Date().getTime();
     sprite.setAttribute("crossOrigin", " ");
@@ -538,7 +540,7 @@ function rand(max) {
     };
   
     finishSprite = new Image();
-    finishSprite.src = "./home.png"+
+    finishSprite.src = "./cheese.png"+
     "?" +
     new Date().getTime();
     finishSprite.setAttribute("crossOrigin", " ");
@@ -573,8 +575,31 @@ function rand(max) {
       player.unbindKeyDown();
       player = null;
     }
-    var e = document.getElementById("diffSelect");
-    difficulty = e.options[e.selectedIndex].value;
+    // var e = document.getElementById("diffSelect");
+    // difficulty = e.options[e.selectedIndex].value
+    difficulty = 11
+    // var e = 1
+    // var difficulty = e.options[Math.floor(Math.random() * e.options.length)].value;
+
+  // Determine the maze size based on the selected difficulty
+  // var mazeSize;
+  // switch (difficulty) {
+  //   case "easy":
+  //     mazeSize = 8;
+  //     break;
+  //   case "medium":
+  //     mazeSize = 11;
+  //     break;
+  //   case "hard":
+  //     mazeSize = 12;
+  //     break;
+  //   case "extreme":
+  //     mazeSize = 13;
+  //     break;
+  //   default:
+  //     mazeSize = 8; // Default to easy if an invalid value is selected
+  // }
+
     cellSize = mazeCanvas.width / difficulty;
     maze = new Maze(difficulty, difficulty);
     draw = new DrawMaze(maze, ctx, cellSize, finishSprite);
