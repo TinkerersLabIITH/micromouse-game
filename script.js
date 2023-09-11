@@ -1,3 +1,49 @@
+let timerInterval; // Declare timerInterval globally
+let gameCompleted = false;
+
+
+function updateTimer() {
+  if (!gameCompleted) {
+  const currentTime = new Date();
+  const elapsedTime = Math.floor((currentTime - startTime) / 1000); // Calculate elapsed time in seconds
+  document.getElementById("timer").textContent = `Timer: ${elapsedTime}s`;
+  }
+}
+
+function startMaze() {
+  if (player != undefined) {
+    player.unbindKeyDown();
+    player = null;
+  }
+
+  // Reset the timer and start it from zero
+  clearInterval(timerInterval);
+  document.getElementById("timer").textContent = "Time: 0s"; // Set initial timer display
+  startTime = new Date();
+
+  gameCompleted = false;
+  
+  cellSize = mazeCanvas.width / difficulty;
+  maze = new Maze(difficulty, difficulty);
+  draw = new DrawMaze(maze, ctx, cellSize, finishSprite);
+  player = new Player(maze, mazeCanvas, cellSize, displayVictoryMess, sprite);
+
+  // Update the timestamp
+  const timestampElement = document.getElementById("timestamp");
+  const timestamp = new Date().toLocaleString(); // Get the current timestamp
+  timestampElement.textContent = `Timestamp: ${timestamp}`;
+
+  // Start the timer
+  timerInterval = setInterval(updateTimer, 1000);
+
+  if (document.getElementById("mazeContainer").style.opacity < "100") {
+    document.getElementById("mazeContainer").style.opacity = "100";
+  }
+}
+
+
+
+
 function rand(max) {
     return Math.floor(Math.random() * max);
   }
@@ -12,7 +58,13 @@ function rand(max) {
   
   
   function displayVictoryMess(moves) {
-    document.getElementById("moves").innerHTML = "You Moved " + moves + " Steps.";
+    gameCompleted = true;
+    // document.getElementById("moves").innerHTML = "You Moved " + moves + " Steps.";
+    const currentTime = new Date();
+  const elapsedTime = Math.floor((currentTime - startTime) / 1000);
+
+  // Display the victory message with the elapsed time
+    document.getElementById("moves").innerHTML = `You took ${elapsedTime} seconds.`;
     toggleVisablity("Message-Container");  
   }
   
@@ -450,6 +502,9 @@ function rand(max) {
   const difficulty = 11;
   
   window.onload = function() {
+
+    const startButton = document.getElementById("startMazeBtn");
+  startButton.addEventListener("click", startMaze);
   
     var completeOne = false;
     var completeTwo = false;
