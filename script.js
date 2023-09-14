@@ -1,6 +1,6 @@
 let timerInterval; 
 let gameCompleted = false;
-let userEmails;
+
 function getQueryParameter(parameterName) {
   const urlParams = new URLSearchParams(window.location.search);
   return urlParams.get(parameterName);
@@ -8,7 +8,7 @@ function getQueryParameter(parameterName) {
 const userEmail = getQueryParameter('userEmail');
 if (userEmail) {
 console.log('User Email:', userEmail);
-console.log(userEmails);
+// console.log(userEmails);
 }
 const uservalue = getQueryParameter('value');
 if (uservalue) {
@@ -78,7 +78,7 @@ function rand(max) {
     console.log("Game completed. Elapsed time:", elapsedTime);
     redirectToDashboard(userEmail, elapsedTime);
   }
-   userEmails=userEmail;
+  const userEmails=userEmail
   function redirectToDashboard(userEmail, elapsedTime) {
     const targetUrl = `https://tinkererslabiith.github.io/TL-Maze-Mouse/#/dashboard?userEmail=${encodeURIComponent(userEmails)}&elapsedTime=${encodeURIComponent(elapsedTime)}`;
     console.log("Redirecting to:", targetUrl);
