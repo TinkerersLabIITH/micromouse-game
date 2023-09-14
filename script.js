@@ -564,7 +564,7 @@ function rand(max) {
       console.log(completeTwo);
       isComplete();
     };
-    
+    alert("Please click on start button");
   };
   
 
