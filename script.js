@@ -1,17 +1,22 @@
 let timerInterval; 
 let gameCompleted = false;
-function getQueryParameter(parameterName) {
-  const urlParams = new URLSearchParams(location.search);
-  return urlParams.get(parameterName);
-}
+
 const userEmail = getQueryParameter('userEmail');
 if (userEmail) {
 console.log('User Email:', userEmail);
+}
+function getQueryParameter(userEmail) {
+  const urlParams = new URLSearchParams(window.location.search);
+  return urlParams.get(userEmail);
 }
 const uservalue = getQueryParameter('value');
 if (uservalue) {
 
   console.log('value:',uservalue);
+}
+function getQueryParameter(uservalue) {
+  const urlParams = new URLSearchParams(window.location.search);
+  return urlParams.get(uservalue);
 }
 
 
