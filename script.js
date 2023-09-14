@@ -517,13 +517,13 @@ function rand(max) {
   var maze, draw, player;
   var cellSize;
   let difficulty
-  if(uservalue=0){
+  if(uservalue==0){
     difficulty = 7;
   }
-  if(uservalue=1){
+  else if(uservalue==1){
     difficulty = 10;
   }
-  if(uservalue=2){
+  else if(uservalue==2){
     difficulty = 15;
   }
   
