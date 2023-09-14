@@ -1,6 +1,7 @@
 let timerInterval; 
 let gameCompleted = false;
 let userEmails=null;
+let elapsedTime=-1;
 
 function getQueryParameter(parameterName) {
   const urlParams = new URLSearchParams(window.location.search);
@@ -75,7 +76,7 @@ function rand(max) {
   function displayVictoryMess(userEmail, moves) {
     gameCompleted = true;
     const currentTime = new Date();
-    const elapsedTime = Math.floor((currentTime - startTime) / 1000);
+    elapsedTime = Math.floor((currentTime - startTime) / 1000);
     console.log("Game completed. Elapsed time:", elapsedTime);
     if(uservalue==0){
       elapsedTime=-1;
