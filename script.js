@@ -4,15 +4,18 @@ function getQueryParameter(parameterName) {
   const urlParams = new URLSearchParams(window.location.search);
   return urlParams.get(parameterName);
 }
-
-
 const userEmail = getQueryParameter('userEmail');
-
-
 if (userEmail) {
 
   console.log('User Email:', userEmail);
 }
+const uservalue = getQueryParameter('value');
+if (uservalue) {
+
+  console.log('value:',uservalue);
+}
+
+
 function updateTimer() {
   if (!gameCompleted) {
     const currentTime = new Date();
@@ -513,7 +516,17 @@ function rand(max) {
   var finishSprite;
   var maze, draw, player;
   var cellSize;
-  const difficulty = 7;
+  let difficulty
+  if(uservalue=0){
+    difficulty = 7;
+  }
+  if(uservalue=1){
+    difficulty = 10;
+  }
+  if(uservalue=2){
+    difficulty = 15;
+  }
+  
   
   window.onload = function() {
 
