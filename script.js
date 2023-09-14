@@ -1,22 +1,18 @@
 let timerInterval; 
 let gameCompleted = false;
-
+function getQueryParameter(parameterName) {
+  const urlParams = new URLSearchParams(window.location.search);
+  return urlParams.get(parameterName);
+}
 const userEmail = getQueryParameter('userEmail');
 if (userEmail) {
 console.log('User Email:', userEmail);
-}
-function getQueryParameter(userEmail) {
-  const urlParams = new URLSearchParams(window.location.search);
-  return urlParams.get(userEmail);
+console.log(userEmails);
 }
 const uservalue = getQueryParameter('value');
 if (uservalue) {
 
   console.log('value:',uservalue);
-}
-function getQueryParameter(uservalue) {
-  const urlParams = new URLSearchParams(window.location.search);
-  return urlParams.get(uservalue);
 }
 
 
@@ -81,9 +77,9 @@ function rand(max) {
     console.log("Game completed. Elapsed time:", elapsedTime);
     redirectToDashboard(userEmail, elapsedTime);
   }
-  const userEmails="awfe"
+  const userEmails=userEmail
   function redirectToDashboard(userEmail, elapsedTime) {
-    const targetUrl = `https://tinkererslabiith.github.io/TL-Maze-Mouse/#/dashboard?userEmail=${encodeURIComponent(userEmail)}&elapsedTime=${encodeURIComponent(elapsedTime)}`;
+    const targetUrl = `https://tinkererslabiith.github.io/TL-Maze-Mouse/#/dashboard?userEmail=${encodeURIComponent(userEmails)}&elapsedTime=${encodeURIComponent(elapsedTime)}`;
     console.log("Redirecting to:", targetUrl);
     window.location.href = targetUrl;
   }
