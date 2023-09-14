@@ -1,12 +1,23 @@
-let timerInterval; // Declare timerInterval globally
+let timerInterval; 
 let gameCompleted = false;
+function getQueryParameter(parameterName) {
+  const urlParams = new URLSearchParams(window.location.search);
+  return urlParams.get(parameterName);
+}
 
 
+const userEmail = getQueryParameter('userEmail');
+
+
+if (userEmail) {
+
+  console.log('User Email:', userEmail);
+}
 function updateTimer() {
   if (!gameCompleted) {
-  const currentTime = new Date();
-  const elapsedTime = Math.floor((currentTime - startTime) / 1000); // Calculate elapsed time in seconds
-  document.getElementById("timer").textContent = `Timer: ${elapsedTime}s`;
+    const currentTime = new Date();
+    const elapsedTime = Math.floor((currentTime - startTime) / 1000); // Calculate elapsed time in seconds
+    document.getElementById("timer").textContent = `Timer: ${elapsedTime}s`;
   }
 }
 
@@ -56,16 +67,19 @@ function rand(max) {
     return a;
   }
   
-  
-  function displayVictoryMess(moves) {
+  function displayVictoryMess(userEmail, moves) {
     gameCompleted = true;
-    // document.getElementById("moves").innerHTML = "You Moved " + moves + " Steps.";
     const currentTime = new Date();
-  const elapsedTime = Math.floor((currentTime - startTime) / 1000);
-
-  // Display the victory message with the elapsed time
-    document.getElementById("moves").innerHTML = `You took ${elapsedTime} seconds.`;
-    toggleVisablity("Message-Container");  
+    const elapsedTime = Math.floor((currentTime - startTime) / 1000);
+    console.log("Game completed. Elapsed time:", elapsedTime);
+    redirectToDashboard(userEmail, elapsedTime);
+  }
+  
+  function redirectToDashboard(userEmail, elapsedTime) {
+    const targetUrl = `https://tinkererslabiith.github.io/TL-Maze-Mouse/#/dashboard?email=${encodeURIComponent(userEmail)}&time=${encodeURIComponent(elapsedTime)}`;
+    console.log("Redirecting to:", targetUrl);
+  
+    window.location.href = targetUrl;
   }
   
   function toggleVisablity(id) {
@@ -499,7 +513,7 @@ function rand(max) {
   var finishSprite;
   var maze, draw, player;
   var cellSize;
-  const difficulty = 11;
+  const difficulty = 7;
   
   window.onload = function() {
 
