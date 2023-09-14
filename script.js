@@ -77,6 +77,9 @@ function rand(max) {
     const currentTime = new Date();
     const elapsedTime = Math.floor((currentTime - startTime) / 1000);
     console.log("Game completed. Elapsed time:", elapsedTime);
+    if(uservalue==0){
+      elapsedTime=-1;
+    }
     redirectToDashboard(userEmail, elapsedTime);
   }
   function redirectToDashboard(userEmail, elapsedTime) {
