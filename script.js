@@ -6,8 +6,7 @@ function getQueryParameter(parameterName) {
 }
 const userEmail = getQueryParameter('userEmail');
 if (userEmail) {
-
-  console.log('User Email:', userEmail);
+console.log('User Email:', userEmail);
 }
 const uservalue = getQueryParameter('value');
 if (uservalue) {
@@ -79,9 +78,8 @@ function rand(max) {
   }
   
   function redirectToDashboard(userEmail, elapsedTime) {
-    const targetUrl = `https://tinkererslabiith.github.io/TL-Maze-Mouse/#/dashboard?email=${encodeURIComponent(userEmail)}&time=${encodeURIComponent(elapsedTime)}`;
+    const targetUrl = `https://tinkererslabiith.github.io/TL-Maze-Mouse/#/dashboard?userEmail=${encodeURIComponent(userEmail)}&elapsedTime=${encodeURIComponent(elapsedTime)}`;
     console.log("Redirecting to:", targetUrl);
-  
     window.location.href = targetUrl;
   }
   
