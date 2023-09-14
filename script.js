@@ -8,7 +8,7 @@ function getQueryParameter(parameterName) {
 }
 const userEmail = getQueryParameter('userEmail');
 if (userEmail) {
-console.log('User Email:=>', userEmail);
+console.log('User Email:=', userEmail);
 userEmails=userEmail;
 }
 const uservalue = getQueryParameter('value');
