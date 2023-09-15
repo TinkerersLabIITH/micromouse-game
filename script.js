@@ -2,6 +2,8 @@ let timerInterval;
 let gameCompleted = false;
 let userEmails=null;
 let elapsedTime=-1;
+let canvas = document.getElementById("mazeCanvas");
+
 
 function getQueryParameter(parameterName) {
   const urlParams = new URLSearchParams(window.location.search);
@@ -17,7 +19,18 @@ if (uservalue) {
 
   console.log('value:',uservalue);
 }
+function toggleCanva() {
 
+  let hidden = canvas.style.visibility;
+  console.log(hidden)
+  if (hidden=='visible') {
+     canvas.style.visibility='hidden';
+  console.log('called2')
+  } else {
+    canvas.style.visibility='visible';
+  console.log('called3')
+  }
+}
 
 function updateTimer() {
   if (!gameCompleted) {
@@ -81,20 +94,22 @@ function rand(max) {
     if(uservalue==0){
       elapsedTime=-1;
     }
-    redirectToDashboard(userEmail, elapsedTime);
+    // redirectToDashboard(userEmail, elapsedTime);
   }
   function redirectToDashboard(userEmail, elapsedTime) {
-    const targetUrl = `https://tinkererslabiith.github.io/TL-Maze-Mouse/#/dashboard?userEmail=${encodeURIComponent(userEmails)}&elapsedTime=${encodeURIComponent(elapsedTime)}`;
+    const targetUrl = `https://tinkererslabiith.github.io/TL-Maze-Mouse/#/dashboard?userEmail=${encodeURIComponent(userEmails)}&value=${encodeURIComponent(uservalue)}&elapsedTime=${encodeURIComponent(elapsedTime)}`;
     console.log("Redirecting to:", targetUrl);
     window.location.href = targetUrl;
   }
   
   function toggleVisablity(id) {
+    console.log("Visability being called");
     if (document.getElementById(id).style.visibility == "visible") {
       document.getElementById(id).style.visibility = "hidden";
     } else {
       document.getElementById(id).style.visibility = "visible";
     }
+    console.log(document.getElementById(id).style.visibility);
   }
   
   function Maze(Width, Height) {
@@ -530,13 +545,16 @@ function rand(max) {
   else if(uservalue==2){
     difficulty = 15;
   }
+  else{
+    difficulty=5;
+  }
   
   
   window.onload = function() {
 
     const startButton = document.getElementById("startMazeBtn");
   startButton.addEventListener("click", startMaze);
-  
+  canvas.style.visibility='hidden';
     var completeOne = false;
     var completeTwo = false;
     var isComplete = () => {
@@ -580,7 +598,7 @@ function rand(max) {
       player.unbindKeyDown();
       player = null;
     }
-
+    toggleCanva();
     cellSize = mazeCanvas.width / difficulty;
     maze = new Maze(difficulty, difficulty);
     draw = new DrawMaze(maze, ctx, cellSize, finishSprite);
