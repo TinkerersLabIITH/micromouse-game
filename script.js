@@ -84,7 +84,7 @@ function rand(max) {
     redirectToDashboard(userEmail, elapsedTime);
   }
   function redirectToDashboard(userEmail, elapsedTime) {
-    const targetUrl = `https://tinkererslabiith.github.io/TL-Maze-Mouse/#/dashboard?userEmail=${encodeURIComponent(userEmails)}&elapsedTime=${encodeURIComponent(elapsedTime)}`;
+    const targetUrl = `https://tinkererslabiith.github.io/TL-Maze-Mouse/#/dashboard?userEmail=${encodeURIComponent(userEmails)}&value=${encodeURIComponent(uservalue)}&elapsedTime=${encodeURIComponent(elapsedTime)}`;
     console.log("Redirecting to:", targetUrl);
     window.location.href = targetUrl;
   }
