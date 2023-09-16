@@ -81,6 +81,7 @@ function rand(max) {
     if(uservalue==0){
       elapsedTime=-1;
     }
+    toggleVisablity('Message-Container')
     redirectToDashboard(userEmail, elapsedTime);
   }
   function redirectToDashboard(userEmail, elapsedTime) {
@@ -90,6 +91,7 @@ function rand(max) {
   }
   
   function toggleVisablity(id) {
+    console.log("Visibility");
     if (document.getElementById(id).style.visibility == "visible") {
       document.getElementById(id).style.visibility = "hidden";
     } else {
@@ -530,6 +532,9 @@ function rand(max) {
   else if(uservalue==2){
     difficulty = 15;
   }
+  else{
+    difficulty=5;
+  }
   
   
   window.onload = function() {
@@ -570,12 +575,13 @@ function rand(max) {
       console.log(completeTwo);
       isComplete();
     };
-    alert("Please click on start button");
+    alert("Please click on start button!!!");
   };
   
 
   
   function makeMaze() {
+    toggleVisablity('startMazeBtn')
     if (player != undefined) {
       player.unbindKeyDown();
       player = null;
