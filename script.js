@@ -581,7 +581,8 @@ function rand(max) {
 
   
   function makeMaze() {
-    toggleVisablity('startMazeBtn')
+    toggleVisablity('startMazeBtn');
+    toggleVisablity('st_text');
     if (player != undefined) {
       player.unbindKeyDown();
       player = null;
